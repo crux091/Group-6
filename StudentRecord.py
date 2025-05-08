@@ -5,6 +5,6 @@ def create_student_record():
     courses = courses_input.split(",")
     return (name, student_id, courses)
 
-record = create_student_record()
+record = create_student_record()    
 print("Student Record:", record)
 #GROUP 6 ABG
