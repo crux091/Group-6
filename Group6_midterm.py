@@ -9,13 +9,14 @@ student_records = [create_student_record() for _ in range(num_students)] # line 
 
 print("\nStudent Records:")
 for i, record in enumerate(student_records, start=1):  # Start indexing from 1
-    print(f"{i}: Name: {get_name(record)}, ID: {get_student_id(record)}, Courses: {get_courses(record)}") # Line 10 to 12 - Nairb
+    print(f"{i}: Name: {get_name(record)}, \n   ID: {get_student_id(record)}, \n   Courses: {get_courses(record)}") # Line 10 to 12 - Nairb
 
 add_more = input("\nDo you want to add a course to a student record? (yes/no): ").lower()
 if add_more == "yes":
-    student_index = int(input(f"Enter record number (1-{num_students}): ")) - 1  # Adjust index to match list position
-    student_records[student_index] = add_course([student_records[student_index]])[0]
+    student_index = int(input(f"Enter record number (1-{num_students}): ")) - 1
+    course = input("Enter the course you want to add: ")  # Prompt for the course
+    student_records[student_index] = add_course(student_records[student_index], course)
 
     print("\nUpdated Record:")
-    print(f"Name: {get_name(student_records[student_index])}, ID: {get_student_id(student_records[student_index])}, Courses: {get_courses(student_records[student_index])}")
-    # Line 14 to 20 - Nairb and Rick    
+    print(f"Name: {get_name(student_records[student_index])},\nID: {get_student_id(student_records[student_index])},\nCourses: {get_courses(student_records[student_index])}")
+    # Line 14 to 20 - Nairb and Rick
