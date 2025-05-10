@@ -29,4 +29,4 @@ if add_more == "yes":
 
     print("\nUpdated Record:")
     print(f"Name: {get_name(student_records[student_index])},\nID: {get_student_id(student_records[student_index])},\nCourses: {get_courses(student_records[student_index])}")
-    # Line 14 to 20 - Nairb and Rick
+    # Line 14 to 31 - Nairb and Rick
