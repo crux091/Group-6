@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        .day-section {
+            margin-bottom: 40px;
+        }
+        .class-card {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weekly Gymnasium Schedule</h1>
+
+    {% if schedule_by_date %}
+        {% for day, sessions in schedule_by_date.items() %}
+            <div class="day-section">
+                <h2>{{ day }}</h2>
+                {% for session in sessions %}
+                    <div class="class-card">
+                        <strong>{{ session.class_name }}</strong><br>
+                        Time: {{ session.time }}<br>
+                        Max Participants: {{ session.max_participants }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No classes scheduled this week.</p>
+    {% endif %}
+</body>
+</html>

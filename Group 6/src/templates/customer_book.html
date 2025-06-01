@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Gym Class</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container py-4">
+        <h1>📝 Book Class: {{ session[1] }}</h1>
+        <p><strong>Date:</strong> {{ session[2] }}<br>
+           <strong>Time:</strong> {{ session[3].strftime('%I:%M %p') }}<br>
+           <strong>Capacity:</strong> {{ session[5] }}/{{ session[4] }} booked</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input required type="text" name="name" class="form-control" id="name" placeholder="John Doe">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input required type="email" name="email" class="form-control" id="email" placeholder="john@example.com">
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+            <a href="{{ url_for('schedule') }}" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
