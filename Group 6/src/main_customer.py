@@ -3,13 +3,13 @@ from collections import defaultdict
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'supersecretkey'
+app.secret_key = 'customer'
 
 # In-memory schedule and booking store
 class_schedule = [
     {
         'id': 1,
-        'class_name': 'Zumba',
+        'class_name': 'Basketball',
         'date': '2025-06-05',
         'time': '09:00 AM',
         'max_participants': 10,
@@ -17,16 +17,16 @@ class_schedule = [
     },
     {
         'id': 2,
-        'class_name': 'Yoga',
-        'date': '2025-06-06',
+        'class_name': 'Volleyball',
+        'date': '2025-12-06',
         'time': '10:00 AM',
         'max_participants': 8,
         'participants': []
     },
     {
         'id': 3,
-        'class_name': 'HIIT',
-        'date': '2025-06-06',
+        'class_name': 'Badminton',
+        'date': '2025-07-06',
         'time': '02:00 PM',
         'max_participants': 12,
         'participants': []
