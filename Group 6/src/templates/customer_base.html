@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FitLife Gymnasium{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <nav class="bg-blue-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-dumbbell text-yellow-400 text-2xl mr-3"></i>
+                    <span class="text-2xl font-bold text-gray-50">Rams Court</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/schedule" class="text-gray-50 hover:text-yellow-300">Schedule</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="max-w-7xl mx-auto py-6 px-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="mb-4 p-4 rounded-md {% if category == 'success' %}bg-green-100 text-green-700{% elif category == 'info' %}bg-blue-100 text-blue-700{% else %}bg-red-100 text-red-700{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="max-w-7xl mx-auto py-8 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">FitLife Gymnasium</h3>
+                    <p class="text-gray-300">Your journey to fitness starts here. Professional trainers, modern equipment, and a supportive community.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <p class="text-gray-300">📍 123 Fitness Street, Gym City</p>
+                    <p class="text-gray-300">📞 (555) 123-4567</p>
+                    <p class="text-gray-300">✉️ info@fitlifegym.com</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Hours</h3>
+                    <p class="text-gray-300">Monday - Friday: 5:00 AM - 11:00 PM</p>
+                    <p class="text-gray-300">Saturday - Sunday: 6:00 AM - 10:00 PM</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 Rams Court. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
